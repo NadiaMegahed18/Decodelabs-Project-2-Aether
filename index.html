@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+      META VIEWPORT TAG: Strict responsive setup. 
+      Enforces accessibility zoom capabilities up to 500% (WCAG compliant)
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <title>Aether // The Fluid Workspace Presentation</title>
+    <!-- Google Fonts for premium, ultra-modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+    <!-- Overall Grid Layout Wrapper (Macro-Layout: Grid) -->
+    <div class="app-grid">
+
+        <!-- HEADER NAVIGATION BAR -->
+        <header class="app-header">
+            <div class="logo-area">
+                <span class="logo-icon">▲</span>
+                <span class="logo-text">AETHER</span>
+            </div>
+
+            <!-- Active Slide Indicator (Middle Header) -->
+            <div class="active-slide-badge" aria-live="polite">
+                Slide <span id="current-slide-num">01</span> / <span class="total-slides-num">06</span>
+            </div>
+
+            <div class="header-controls">
+                <!-- Theme Mode Toggle Button -->
+                <button id="theme-toggle" class="btn btn-icon" aria-label="Toggle Light/Dark Theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+
+                <!-- 
+                  Popover Menu Toggle (Mobile Menu Drawer Trigger)
+                  Accessible Touch target >= 44x44px. No JS Required trigger!
+                -->
+                <button popovertarget="slides-menu" class="btn btn-icon hamburger-trigger" aria-label="Toggle slides index">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- 
+          SIDEBAR INDEX MENU (Popover API Container)
+          Using the Popover API. Responsive layout makes it inline sidebar 
+          on desktop screen widths, and a slide-out overlay drawers on mobile.
+        -->
+        <aside id="slides-menu" popover="auto" class="app-sidebar">
+            <div class="sidebar-header">
+                <span class="sidebar-title">// PRESENTATION INDEX</span>
+                <button popovertarget="slides-menu" popovertargetaction="hide" class="btn btn-icon close-btn" aria-label="Close index menu">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#slide-1" class="menu-link active" data-slide-idx="0"><span>01</span> Welcome to Aether</a></li>
+                    <li><a href="#slide-2" class="menu-link" data-slide-idx="1"><span>02</span> Feature Matrix</a></li>
+                    <li><a href="#slide-3" class="menu-link" data-slide-idx="2"><span>03</span> Ambient Workspace</a></li>
+                    <li><a href="#slide-4" class="menu-link" data-slide-idx="3"><span>04</span> Fluid Typography</a></li>
+                    <li><a href="#slide-5" class="menu-link" data-slide-idx="4"><span>05</span> Workspace Pricing</a></li>
+                    <li><a href="#slide-6" class="menu-link" data-slide-idx="5"><span>06</span> Connect & Start</a></li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <p>Designed for the device that hasn't been invented yet.</p>
+            </div>
+        </aside>
+
+        <!-- 
+          SLIDES VIEWPORT (Horizontal Snapping Slider)
+          Contains the slides. Side-by-side on viewport using CSS flex and scroll snapping.
+        -->
+        <main class="slide-viewport">
+
+            <!-- SLIDE 1: WELCOME & HERO -->
+            <section id="slide-1" class="slide-card welcome-slide">
+                <div class="slide-inner">
+                    <div class="slide-hero-text">
+                        <span class="slide-badge">INTRODUCING AETHER</span>
+                        <h2 class="fluid-title">The Fluid Workspace.</h2>
+                        <p class="lead-text">
+                            Experience ambient productivity. A workspace that morphs to your context, scale, and device constraints natively.
+                        </p>
+                        
+                        <div class="slide-cta-row">
+                            <a href="#slide-2" class="btn btn-primary cta-btn">Explore Features</a>
+                            <a href="#slide-5" class="btn btn-secondary cta-btn">View Pricing</a>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-hero-visual">
+                        <div class="glass-orb-container">
+                            <div class="glass-orb"></div>
+                            <div class="orb-orbit-line"></div>
+                            <div class="orb-particle"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 2: FEATURE MATRIX (Grid Layout Showcase) -->
+            <section id="slide-2" class="slide-card grid-slide">
+                <div class="slide-inner">
+                    <div class="slide-intro-header">
+                        <span class="slide-badge">ECOSYSTEM</span>
+                        <h2>Omni-Channel Feature Matrix</h2>
+                        <p>Constructed using CSS Grid (Macro) and Flexbox (Micro) layout systems.</p>
+                    </div>
+
+                    <!-- Macro Layout: Grid for 4 feature cards -->
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="card-icon">⚡</div>
+                            <h3>Fluid Architecture</h3>
+                            <p>Reflowing layouts built exclusively using percentages and relative units. Never break borders.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="card-icon">🌀</div>
+                            <h3>Ambient Themes</h3>
+                            <p>Seamless transition between blueprint templates, dark glowing neons, and pastel papers.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="card-icon">📐</div>
+                            <h3>Ergonomic Reaches</h3>
+                            <p>Designed for thumbs. Interactive elements sized at 44px+ and positioned for comfort.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="card-icon">🔍</div>
+                            <h3>500% WCAG Scale</h3>
+                            <p>Uncapped browser magnification ensures complete visual readability for everyone.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 3: AMBIENT WORKSPACE PLAYGROUND -->
+            <section id="slide-3" class="slide-card playground-slide">
+                <div class="slide-inner">
+                    <div class="slide-intro-header">
+                        <span class="slide-badge">INTERACTIVE DEMO</span>
+                        <h2>Dynamic Layout Workspace</h2>
+                        <p>See how micro components adjust within our macro grid layout.</p>
+                    </div>
+
+                    <div class="playground-layout-2col">
+                        <div class="playground-controls-card">
+                            <h3>Layout Controller</h3>
+                            <p>Toggle grid outlines or change flex directions of internal cards dynamically.</p>
+                            
+                            <div class="control-group">
+                                <button id="btn-toggle-grid-lines" class="btn btn-secondary btn-full">Toggle Wireframe Grid</button>
+                            </div>
+                            
+                            <div class="control-group">
+                                <label>Flex Alignment Controls:</label>
+                                <div class="flex-control-row">
+                                    <button class="btn btn-sm btn-secondary active btn-card-flex" data-align="row">Horizontal Row</button>
+                                    <button class="btn btn-sm btn-secondary btn-card-flex" data-align="column">Vertical Column</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Simulated Grid Sandbox -->
+                        <div class="workspace-sandbox-wrapper">
+                            <div id="simulated-workspace-grid" class="sandbox-grid">
+                                <div class="sandbox-hdr">Header Nav Bar</div>
+                                <div class="sandbox-sdr">Sidebar</div>
+                                <div class="sandbox-body">
+                                    <div id="sandbox-flex-items" class="sandbox-flex-row">
+                                        <div class="sandbox-card">
+                                            <span class="scard-num">01</span>
+                                            <span>Card A</span>
+                                        </div>
+                                        <div class="sandbox-card">
+                                            <span class="scard-num">02</span>
+                                            <span>Card B</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sandbox-ftr">Footer Elements</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 4: FLUID TYPOGRAPHY ESTIMATOR -->
+            <section id="slide-4" class="slide-card calculator-slide">
+                <div class="slide-inner">
+                    <div class="slide-intro-header">
+                        <span class="slide-badge">MATHEMATICS</span>
+                        <h2>Typography with clamp()</h2>
+                        <p>Observe how text sizes scale linearly based on the container width.</p>
+                    </div>
+
+                    <div class="playground-layout-2col">
+                        <div class="calculator-explanation">
+                            <h3>No Media Breakpoints Required</h3>
+                            <p>
+                                By wrapping text scale calculations inside a `clamp()`, we eliminate step-wise layout shifts. The viewport width dictates the ideal size.
+                            </p>
+                            <div class="code-snippet-box">
+                                <pre><code>font-size: clamp(<br>  1.5rem, /* Min Limit */<br>  3.5vw,  /* Scale Factor */<br>  3.0rem  /* Max Limit */<br>);</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="calculator-simulator-card">
+                            <div class="simulator-display">
+                                <h3 id="interactive-clamp-header" style="font-size: clamp(1.5rem, 3.5vw, 3rem);">Fluid Text Scale</h3>
+                                <p class="simulator-subtext">Drag the width slider below to simulate screen resizing.</p>
+                            </div>
+
+                            <div class="calculator-telemetry">
+                                <div class="telemetry-item">
+                                    <span>Viewport Width:</span>
+                                    <strong id="live-viewport-w">800px</strong>
+                                </div>
+                                <div class="telemetry-item">
+                                    <span>Computed Font-Size:</span>
+                                    <strong id="live-computed-font">28.0px</strong>
+                                </div>
+                            </div>
+
+                            <div class="slider-control-row">
+                                <label for="clamp-width-range">Simulate Viewport (vw):</label>
+                                <input type="range" id="clamp-width-range" min="320" max="1440" value="800">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 5: PREMIUM PRICING PLANS -->
+            <section id="slide-5" class="slide-card pricing-slide">
+                <div class="slide-inner">
+                    <div class="slide-intro-header">
+                        <span class="slide-badge">MEMBERSHIPS</span>
+                        <h2>Workspace Tier Pricing</h2>
+                        <p>Flexible plan selections configured via CSS Flexbox.</p>
+                    </div>
+
+                    <!-- Micro Layout: Flex layout for pricing cards -->
+                    <div class="pricing-flex-container">
+                        <div class="price-card">
+                            <div class="price-tier">Starter</div>
+                            <div class="price-val">$9<span>/mo</span></div>
+                            <ul class="price-features">
+                                <li>1 Active Workspace</li>
+                                <li>Basic Ambient Themes</li>
+                                <li>Fluid Web Sizing</li>
+                            </ul>
+                            <button class="btn btn-secondary card-pricing-btn">Select Plan</button>
+                        </div>
+                        
+                        <div class="price-card featured-price-card">
+                            <span class="featured-badge">MOST POPULAR</span>
+                            <div class="price-tier">Professional</div>
+                            <div class="price-val">$24<span>/mo</span></div>
+                            <ul class="price-features">
+                                <li>Unlimited Workspaces</li>
+                                <li>Full Ambient System</li>
+                                <li>Advanced Grid Control</li>
+                            </ul>
+                            <button class="btn btn-primary card-pricing-btn">Select Plan</button>
+                        </div>
+
+                        <div class="price-card">
+                            <div class="price-tier">Enterprise</div>
+                            <div class="price-val">$79<span>/mo</span></div>
+                            <ul class="price-features">
+                                <li>Dedicated Node Clusters</li>
+                                <li>Tailored HSL Themes</li>
+                                <li>SSO & Accessibility Audit</li>
+                            </ul>
+                            <button class="btn btn-secondary card-pricing-btn">Select Plan</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 6: CONTACT & CONCLUSION -->
+            <section id="slide-6" class="slide-card contact-slide">
+                <div class="slide-inner">
+                    <div class="slide-intro-header">
+                        <span class="slide-badge">CONNECT</span>
+                        <h2>Deploy Aether Workspace</h2>
+                        <p>Join the future of fluid computing. Earn your Adaptability Badge today.</p>
+                    </div>
+
+                    <div class="playground-layout-2col">
+                        <div class="contact-details">
+                            <h3>Let's Reflow Together</h3>
+                            <p>Sign up to receive newsletters, updates, and early-access invitation files.</p>
+                            <form id="newsletter-form" class="newsletter-form-flex" onsubmit="event.preventDefault();">
+                                <input type="email" placeholder="Enter your email" aria-label="Email address" required>
+                                <button type="submit" class="btn btn-primary">Join List</button>
+                            </form>
+                            <div id="form-success-msg" class="success-alert-box hidden">
+                                <span>✔ Joined successfully! Check your inbox soon.</span>
+                            </div>
+                        </div>
+
+                        <!-- Interactive checklist dashboard (qualification criteria) -->
+                        <div class="intern-badge-card">
+                            <div class="badge-card-icon">🎖️</div>
+                            <h3>Qualification Checklist</h3>
+                            <p>Verify project criteria state below:</p>
+                            
+                            <ul class="verification-checks">
+                                <li>
+                                    <input type="checkbox" id="check-grid" checked>
+                                    <label for="check-grid">Grid Layout Structure (Macro)</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="check-flex" checked>
+                                    <label for="check-flex">Flexbox Components (Micro)</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="check-sizing" checked>
+                                    <label for="check-sizing">100% Fluid Units (No px values)</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="check-popover" checked>
+                                    <label for="check-popover">Popover API Navigation Menu</label>
+                                </li>
+                            </ul>
+                            
+                            <div id="badge-lock-box" class="badge-lock-box locked">
+                                <span class="badge-status-label">STATUS: PENDING VERIFICATION</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER CONTROLS NAVIGATION BAR -->
+        <footer class="app-footer">
+            <div class="progress-bar-container">
+                <div id="slideshow-progress-bar" class="progress-fill" style="width: 16.66%;"></div>
+            </div>
+
+            <div class="footer-buttons">
+                <!-- Previous Button (WCAG target size >= 44x44px / 2.75rem) -->
+                <button id="btn-prev-slide" class="btn btn-icon footer-nav-btn" aria-label="Previous Slide">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <!-- Next Button (WCAG target size >= 44x44px / 2.75rem) -->
+                <button id="btn-next-slide" class="btn btn-icon footer-nav-btn" aria-label="Next Slide">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
